@@ -1,0 +1,48 @@
+{
+  "package": "Path Planning Benchmark",
+  "proposed_algorithm": "Three-Phase Incremental SFO",
+  "benchmark": {
+    "script": "run_benchmark.ps1",
+    "config": "configs/benchmark.yaml",
+    "algorithms": 9,
+    "maps": 3,
+    "independent_runs": 5,
+    "planned_runs": 135
+  },
+  "comparison_policy": {
+    "native_objectives_preserved": true,
+    "native_representations_preserved": true,
+    "common_metrics_are_post_run_only": true,
+    "failed_runs_retained": true,
+    "path_quality_statistics_use_valid_completed_paths_only": true,
+    "all_algorithms_are_shown_in_boxplots": true
+  },
+  "diagnostic_outputs": {
+    "static_plot_per_run": true,
+    "gif_per_run": true,
+    "partial_paths_excluded_from_quality_statistics": true,
+    "no_path_runs_rendered_explicitly": true
+  },
+  "native_path_representations": {
+    "aco": "haghrah_native_20x20_grid_chain",
+    "aco_ga": "variable_length_grid_path",
+    "sfo": "incremental_variable_length_continuous_path"
+  },
+  "aco_ga": {
+    "status": "paper_faithful_independent_reproduction",
+    "official_author_code_available": false,
+    "native_objective_preserved": true,
+    "traceability": "docs/ACO_GA_PAPER_TRACEABILITY.md",
+    "self_test": "validate_aco_ga_reproduction.ps1"
+  },
+  "aco": {
+    "source": "Haghrah/ACO---Robot-Path-Planning",
+    "repository_relationship": "independent simulation of Liu et al. (2017); not official author code",
+    "archive_sha256": "531D2D10633C042670CE765CFE8BA4F3DF87A25CD10881CACFFF9946CBBDEB61",
+    "source_invoked_directly": true,
+    "source_modified": false,
+    "native_objective_preserved": true,
+    "traceability": "docs/ACO_HAGHRAH_TRACEABILITY.md",
+    "self_test": "validate_aco_source.ps1"
+  }
+}

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as described below."
+type: software
+title: "SFO Path Planning"
+abstract: "A reproducible benchmark for static global robot path planning with the Three-Phase Incremental SFO method and reference planners."
+authors:
+  - family-names: "Kareem"
+    given-names: "Abbas Aqeel"
+    email: "abbasaqeel@mtu.edu.iq"
+repository-code: "https://github.com/abbasaqeel-bit/SFO-Path-Planning"
+license: "MIT"
+date-released: 2026-07-29
+keywords:
+  - "robot path planning"
+  - "swarm intelligence"
+  - "metaheuristic optimization"
+  - "mobile robotics"
