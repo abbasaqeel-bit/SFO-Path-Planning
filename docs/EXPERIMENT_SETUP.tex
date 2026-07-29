@@ -1,0 +1,61 @@
+% LaTeX-ready experimental setup. Add the relevant package imports in the manuscript preamble.
+\section{Experimental Setup}
+\label{sec:experimental-setup}
+
+The benchmark considers static global path planning in known two-dimensional
+workspaces. All maps have continuous Cartesian bounds of $100\times100$ units
+and contain circular and axis-aligned rectangular obstacles. The robot is
+modelled as a disc and collision checking accounts for the specified robot
+radius. Nine planners were evaluated: A*, Dijkstra, RRT, RRT*, Informed RRT*,
+PRM, ACO, ACO--GA, and the proposed Three-Phase Incremental SFO. Each planner
+retained its native representation and internal objective function; common
+metrics were calculated only after path generation.
+
+Five independent runs were executed for every map--planner pair using a
+deterministic seed schedule initialized from base seed 2026. Hence, the study
+contains $9\times3\times5=135$ planned runs.
+
+\begin{table*}[t]
+\centering
+\caption{Static-map specifications used in the benchmark.}
+\label{tab:map-specifications}
+\begin{tabular}{lcccccl}
+\toprule
+Map & Bounds & Start & Goal & Radius & Obstacles & Purpose \\
+\midrule
+Dense-obstacle & $100\times100$ & $(5,5)$ & $(95,95)$ & 0.5 & $3$ circles, $2$ rectangles & Mixed clutter \\
+Narrow-passage & $100\times100$ & $(8,12)$ & $(92,88)$ & 1.0 & $4$ circles, $6$ rectangles & Central passage \\
+Bug-trap & $100\times100$ & $(48,50)$ & $(92,50)$ & 1.0 & $3$ circles, $5$ rectangles & U-shaped escape \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Planner settings used in the benchmark.}
+\label{tab:planner-settings}
+\small
+\begin{tabular}{lp{11.2cm}}
+\toprule
+Planner & Settings \\
+\midrule
+A* & Grid resolution $=1.0$. \\
+Dijkstra & Grid resolution $=1.0$. \\
+RRT & Rectangle resolution $=1.0$; expansion distance $=4.0$; path resolution $=0.5$; goal sampling $=10\%$; maximum iterations $=1000$. \\
+RRT* & RRT settings with connection-circle distance $=50.0$ and search until the maximum iteration enabled. \\
+Informed RRT* & Rectangle resolution $=1.0$; expansion distance $=2.0$; goal sampling $=10\%$; maximum iterations $=1000$. \\
+PRM & Rectangle resolution $=1.0$; sampled nodes $=500$; nearest neighbours $=10$; maximum edge length $=30.0$. \\
+ACO & Ants $=20$; steps per ant $=200$; colony iterations $=40$; $\alpha=1.1$; $\beta=12.0$; $\gamma=0.02$; evaporation $=0.5$; brushfire iterations $=5$; $Q=10.0$. \\
+ACO--GA & Grid resolution $=1.0$; population $=80$; ACO iterations $=90$; GA iterations $=60$; $\rho=0.25$; $\alpha=2.0$; $\beta=8.0$; $Q=100.0$; crossover $=0.20$; mutation $=0.05$; length and smoothness weights $=0.50$; corner cutting disabled; timeout $=1800$ s. \\
+Three-Phase Incremental SFO & Population $=30$; iterations $=250$; candidate attempts $=100$; initial step range $=[8.0,16.0]$; glide velocity range $=[5.0,18.0]$; target velocity range $=[0.5,8.0]$; micro-adjustment velocity range $=[0.1,2.5]$; goal-connection distance $=18.0$; collision resolution $=0.25$. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+A run was classified as successful only if it reached the goal, was
+collision-free, and passed the common geometric validator. Shortest-path,
+average-path, turning-point, and smoothness summaries were calculated from
+valid completed paths only. Execution time was averaged over all attempts,
+including unsuccessful attempts. Failed and partial paths were retained for
+diagnostic figures and success-rate analysis but were excluded from path-quality
+means.
