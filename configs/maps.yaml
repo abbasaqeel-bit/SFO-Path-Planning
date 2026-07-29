@@ -1,0 +1,143 @@
+maps:
+  simple_01:
+    bounds: [0.0, 100.0, 0.0, 100.0]
+    start: [5.0, 5.0]
+    goal: [95.0, 95.0]
+    robot_radius: 0.5
+    obstacles:
+      - type: circle
+        center: [50.0, 50.0]
+        radius: 10.0
+
+  mixed_01:
+    bounds: [0.0, 120.0, 0.0, 100.0]
+    start: [5.0, 10.0]
+    goal: [115.0, 90.0]
+    robot_radius: 1.0
+    obstacles:
+      - type: circle
+        center: [40.0, 45.0]
+        radius: 9.0
+      - type: rectangle
+        bounds: [65.0, 85.0, 25.0, 70.0]
+
+  open_01:
+    bounds: [0.0, 100.0, 0.0, 100.0]
+    start: [5.0, 5.0]
+    goal: [95.0, 95.0]
+    robot_radius: 0.5
+    obstacles: []
+
+  dense_01:
+    bounds: [0.0, 100.0, 0.0, 100.0]
+    start: [5.0, 5.0]
+    goal: [95.0, 95.0]
+    robot_radius: 0.5
+    obstacles:
+      - type: circle
+        center: [25.0, 25.0]
+        radius: 8.0
+      - type: circle
+        center: [50.0, 50.0]
+        radius: 10.0
+      - type: circle
+        center: [72.0, 35.0]
+        radius: 7.0
+      - type: rectangle
+        bounds: [20.0, 35.0, 60.0, 82.0]
+      - type: rectangle
+        bounds: [60.0, 78.0, 68.0, 82.0]
+  narrow_passage_01:
+    name: "Narrow-Passage Challenge"
+
+    bounds: [0.0, 100.0, 0.0, 100.0]
+
+    start: [8.0, 12.0]
+    goal: [92.0, 88.0]
+
+    robot_radius: 1.0
+
+    obstacles:
+      # Central wall with a narrow opening between y = 46 and y = 54
+      - type: rectangle
+        bounds: [46.0, 54.0, 0.0, 46.0]
+
+      - type: rectangle
+        bounds: [46.0, 54.0, 54.0, 100.0]
+
+      # Obstacles on the left side guide the planner toward the passage
+      - type: rectangle
+        bounds: [15.0, 30.0, 24.0, 33.0]
+
+      - type: rectangle
+        bounds: [27.0, 40.0, 65.0, 74.0]
+
+      - type: circle
+        center: [18.0, 62.0]
+        radius: 6.0
+
+      - type: circle
+        center: [37.0, 42.0]
+        radius: 4.0
+
+      # Obstacles on the right side prevent a trivial straight exit
+      - type: rectangle
+        bounds: [60.0, 74.0, 26.0, 35.0]
+
+      - type: rectangle
+        bounds: [70.0, 85.0, 66.0, 75.0]
+
+      - type: circle
+        center: [63.0, 59.0]
+        radius: 4.0
+
+      - type: circle
+        center: [84.0, 43.0]
+        radius: 6.0
+  bug_trap_01:
+    name: "Bug-Trap Challenge"
+
+    bounds: [0.0, 100.0, 0.0, 100.0]
+
+    # Start is located inside the trap
+    start: [48.0, 50.0]
+
+    # Goal is located outside the closed side of the trap
+    goal: [92.0, 50.0]
+
+    robot_radius: 1.0
+
+    obstacles:
+      # Upper wall of the U-shaped trap
+      - type: rectangle
+        bounds: [20.0, 65.0, 65.0, 72.0]
+
+      # Lower wall of the U-shaped trap
+      - type: rectangle
+        bounds: [20.0, 65.0, 28.0, 35.0]
+
+      # Closed right side facing the goal
+      - type: rectangle
+        bounds: [58.0, 65.0, 35.0, 65.0]
+
+      # Upper external obstacle:
+      # creates a constrained route after leaving the trap
+      - type: rectangle
+        bounds: [69.0, 82.0, 70.0, 80.0]
+
+      # Lower external obstacle
+      - type: rectangle
+        bounds: [69.0, 82.0, 20.0, 30.0]
+
+      # Additional obstacles around the escape region
+      - type: circle
+        center: [13.0, 78.0]
+        radius: 5.0
+
+      - type: circle
+        center: [13.0, 22.0]
+        radius: 5.0
+
+      - type: circle
+        center: [79.0, 50.0]
+        radius: 5.0

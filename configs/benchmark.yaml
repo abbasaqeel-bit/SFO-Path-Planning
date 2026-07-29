@@ -1,0 +1,79 @@
+# Static benchmark configuration: 9 planners x 3 challenge maps x 5 runs.
+experiment:
+  name: static_benchmark
+  output_directory: results/experiments
+  runs: 5
+  base_seed: 2026
+  save_plots: true
+  save_gifs: true
+  clean_output: true
+
+environments:
+  maps_file: configs/maps.yaml
+  map_ids:
+    # - open_01
+    # - simple_01
+    # - mixed_01
+    - dense_01
+    - narrow_passage_01
+    - bug_trap_01
+
+planners:
+  - name: astar_pythonrobotics
+    family: grid_search
+    adapter: astar
+    parameters: {resolution: 1.0}
+
+  - name: dijkstra_pythonrobotics
+    family: grid_search
+    adapter: dijkstra
+    parameters: {resolution: 1.0}
+
+  - name: rrt_pythonrobotics
+    family: sampling_based
+    adapter: rrt
+    parameters: {rectangle_resolution: 1.0, expand_dis: 4.0, path_resolution: 0.5, goal_sample_rate: 10, max_iter: 1000}
+
+  - name: rrt_star_pythonrobotics
+    family: sampling_based
+    adapter: rrt_star
+    parameters: {rectangle_resolution: 1.0, expand_dis: 4.0, path_resolution: 0.5, goal_sample_rate: 10, max_iter: 1000, connect_circle_dist: 50.0, search_until_max_iter: true}
+
+  - name: informed_rrt_star_pythonrobotics
+    family: sampling_based
+    adapter: informed_rrt_star
+    parameters: {rectangle_resolution: 1.0, expand_dis: 2.0, goal_sample_rate: 10, max_iter: 1000}
+
+  - name: prm_pythonrobotics
+    family: sampling_based
+    adapter: prm
+    parameters: {rectangle_resolution: 1.0, n_sample: 500, n_knn: 10, max_edge_len: 30.0}
+
+  - name: aco_published_global
+    family: population_based_optimization
+    adapter: aco
+    # Exact parameters used by Haghrah's repository example.
+    parameters: {ant_count: 20, step_count: 200, colony_iterations: 40, alpha: 1.1, beta: 12.0, gamma: 0.02, evaporation_rate: 0.5, brushfire_iter: 5, pheromone_q: 10.0}
+
+  - name: aco_ga_paper_reproduction
+    family: hybrid_population_optimization
+    adapter: aco_ga_matlab
+    parameters: {runtime: auto, resolution: 1.0, population_size: 80, aco_iterations: 90, ga_iterations: 60, rho: 0.25, alpha: 2.0, beta: 8.0, Q: 100.0, Pc: 0.2, Pm: 0.05, length_weight: 0.5, smoothness_weight: 0.5, allow_corner_cutting: false, timeout_seconds: 1800}
+
+  - name: three_phase_incremental_sfo
+    family: proposed_incremental_metaheuristic
+    adapter: sfo
+    parameters:
+      population_size: 30
+      max_iterations: 250
+      max_candidate_attempts: 100
+      initial_step_min: 8.0
+      initial_step_max: 16.0
+      glide_v_min: 5.0
+      glide_v_max: 18.0
+      target_v_min: 0.5
+      target_v_max: 8.0
+      micro_v_min: 0.1
+      micro_v_max: 2.5
+      goal_connection_distance: 18.0
+      collision_resolution: 0.25
