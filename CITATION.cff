@@ -10,6 +10,9 @@ authors:
 repository-code: "https://github.com/abbasaqeel-bit/SFO-Path-Planning"
 license: "MIT"
 date-released: 2026-07-29
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21675889"
 keywords:
   - "robot path planning"
   - "swarm intelligence"
