@@ -6,6 +6,7 @@
 [![MATLAB](https://img.shields.io/badge/MATLAB-optional-0076A8?logo=Mathworks&logoColor=white)](https://www.mathworks.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Reproducibility](https://img.shields.io/badge/Benchmark-reproducible-2ea44f)](docs/EXPERIMENT_SETUP.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21675889.svg)](https://doi.org/10.5281/zenodo.21675889)
 
 <p align="center">
   <img src="assets/sfo_planning_demo.gif" alt="Illustrative SFO path-planning trace" width="760">
@@ -129,7 +130,9 @@ Each run includes a trajectory, planner state, configuration snapshot, metrics, 
 
 ## Citation and archival record
 
-Citation metadata is included in [`CITATION.cff`](CITATION.cff) and Zenodo metadata is included in [`.zenodo.json`](.zenodo.json). The repository is configured for Zenodo archival; the DOI will be added after Zenodo processes the first GitHub release.
+This software is archived on Zenodo: [10.5281/zenodo.21675889](https://doi.org/10.5281/zenodo.21675889).
+
+Citation metadata is provided in [`CITATION.cff`](CITATION.cff), and Zenodo metadata is included in [`.zenodo.json`](.zenodo.json).
 
 ## License
 
